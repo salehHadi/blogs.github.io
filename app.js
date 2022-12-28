@@ -1,9 +1,12 @@
 const express = require('express');
+const morgan = require('morgan');
 
 const app = express();
 
 app.set('view engine', 'ejs');
 
+app.use(express.static('public'));
+app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
     const blogs = [
@@ -30,4 +33,4 @@ app.use((req, res) => {
     res.status(404).render('404', {title: '404'})
 })
 
-app.listen(4000, ()=> {console.log('server is active on localhost at 4000')})
+app.listen(3000, ()=> {console.log('server is active on localhost at 3000')})
